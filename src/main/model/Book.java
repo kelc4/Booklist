@@ -65,11 +65,11 @@ public class Book {
         this.status = status;
     }
 
-    public void addRatings(int stars) {
+    public void setRating(int stars) {
         this.rating = stars;
     }
 
-    public void addNotes(String notes) {
+    public void setNote(String notes) {
         this.note = notes;
     }
 

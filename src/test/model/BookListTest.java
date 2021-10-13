@@ -3,53 +3,52 @@ package model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class BookListTest {
-    BookList bookList;
+    BookList booklist;
     Book b;
 
     @BeforeEach
     public void setup() {
-        bookList = new BookList();
+        booklist = new BookList();
         b = new Book("Title", "Author", "Image");
     }
 
     @Test
     public void testAddBook() {
-        assertTrue(bookList.addBook(b));
-        assertFalse(bookList.addBook(b));
+        assertTrue(booklist.addBook(b));
+        assertFalse(booklist.addBook(b));
     }
 
     @Test
     public void testDeleteBook() {
-        assertFalse(bookList.deleteBook(b));
-        bookList.addBook(b);
-        assertTrue(bookList.deleteBook(b));
+        assertFalse(booklist.deleteBook(b));
+        booklist.addBook(b);
+        assertTrue(booklist.deleteBook(b));
     }
 
     @Test
     public void testCheckBox() {
-        assertTrue(bookList.checkBox(b));
+        assertTrue(booklist.checkBox(b));
     }
 
     @Test
     public void testAddRating() {
-        assertEquals(5, bookList.addRating(b, 5));
+        assertEquals(5, booklist.addRating(b, 5));
     }
 
     @Test
     public void testAddNote() {
-        assertTrue(bookList.addNote(b, "Good"));
+        assertTrue(booklist.addNote(b, "Good", 1));
     }
 
     @Test
-    public void testDisplayList() {
-        assertEquals(new ArrayList<>(), bookList.displayList());
-
+    public void testBookExists() {
+        assertFalse(booklist.bookExists(b));
+        booklist.addBook(b);
+        assertTrue(booklist.bookExists(b));
     }
+
 
 }
