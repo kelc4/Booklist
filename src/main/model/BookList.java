@@ -38,10 +38,12 @@ public class BookList {
     public boolean checkBox(int index) {
         if (isIndexInvalid(index)) {
             return false;
+        } else {
+            Book book = booklist.get(index - 1);
+            book.setStatus(!book.getStatus());
+            return true;
         }
-        Book book = booklist.get(index - 1);
-        book.setStatus(!book.getStatus());
-        return true;
+
     }
 
 //    //Adds personal rating to the book

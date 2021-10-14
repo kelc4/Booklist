@@ -8,8 +8,8 @@ import java.util.Scanner;
 public class BookListApp {
     private String name;
     private int action;
-    private BookList userList;
-    private Scanner in;
+    private final BookList userList;
+    private final Scanner in;
 
     //Creates new scanner, assigns action to -1
     public BookListApp() {
@@ -36,7 +36,6 @@ public class BookListApp {
         switch (action) {
             case 0:
                 terminate();
-                break;
             case 1:
                 addABook();
                 break;

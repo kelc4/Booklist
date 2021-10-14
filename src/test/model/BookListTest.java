@@ -3,6 +3,8 @@ package model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class BookListTest {
@@ -32,6 +34,7 @@ class BookListTest {
     public void testCheckBox() {
         booklist.addBook(new Book("Title", "Author"));
         assertTrue(booklist.checkBox(1));
+        assertFalse(booklist.checkBox(3));
     }
 
 //    @Test
@@ -45,6 +48,16 @@ class BookListTest {
 //    }
 
     @Test
+    public void testDisplayList() {
+        String check = String.format("%-3s %-7s %-25s %-15s %-15s\n\n", "#", "Read", "Title", "Author", "Date Added");
+        assertEquals(check, booklist.displayList());
+        booklist.addBook(b);
+        check = String.format("%-3s %-7s %-25s %-15s %-15s\n\n", "#", "Read", "Title", "Author", "Date Added") +
+                String.format("%-3s %-7s %-25s %-15s %-15s\n", 1, false, "Title", "Author", LocalDate.now());
+        assertEquals(check, booklist.displayList());
+    }
+
+    @Test
     public void testBookExists() {
         Book b2 = new Book("a", "a");
         assertFalse(booklist.bookExists(b));
@@ -52,6 +65,21 @@ class BookListTest {
         assertTrue(booklist.bookExists(b));
         booklist.addBook(b2);
         assertTrue(booklist.bookExists(b2));
+    }
+
+    @Test
+    public void testIsIndexInvalid() {
+        assertTrue(booklist.isIndexInvalid(1));
+        booklist.addBook(b);
+        assertFalse(booklist.isIndexInvalid(1));
+        assertTrue(booklist.isIndexInvalid(9));
+    }
+
+    @Test
+    public void testLength() {
+        assertEquals(0, booklist.length());
+        booklist.addBook(b);
+        assertEquals(1, booklist.length());
     }
 
 }
