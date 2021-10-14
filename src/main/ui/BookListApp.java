@@ -61,8 +61,8 @@ public class BookListApp {
     // ** If I decide to add addrating and addnote --> change view list to #6, change choice range to choice > 6 **
     //              "  + "[4] Add a rating \n [5] Add a note \n
     public int requestAction() {
-        System.out.printf("\n [0] Quit \n [1] Add a book \n [2] Remove a book \n [3] Check a book off as read \n "
-                + "[4] View list\n");
+        System.out.println("\n [0] Quit \n [1] Add a book \n [2] Remove a book \n [3] Check a book off as read \n "
+                + "[4] View list");
 
         int choice  = in.nextInt();
         while (choice < 0 || choice > 4) {
