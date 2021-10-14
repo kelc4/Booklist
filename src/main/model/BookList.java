@@ -24,48 +24,52 @@ public class BookList {
     }
 
     //MODIFIES: this
-    //EFFECTS: Removes book from booklist
-    public boolean deleteBook(Book book) {
-        if (bookExists(book)) {
-            booklist.remove(book);
-            return true;
+    //EFFECTS: Removes book from booklist based in where it is in the list
+    public boolean deleteBook(int index) {
+        if (isIndexInvalid(index)) {
+            return false;
         }
-        return false;
+        booklist.remove(index - 1);
+        return true;
     }
 
     //Checks if unchecked, unchecks if checked
     //MODIFIES: book
-    public boolean checkBox(Book book) {
-        book.setStatus(!book.getStatus());
-        return book.getStatus();
-    }
-
-    //Adds personal rating to the book
-    //MODIFIES: book
-    public int addRating(Book book, int rating) {
-        book.setRating(rating);
-        return rating;
-    }
-
-    //Add any comment, notes about the book
-    //MODIFIES: book
-    public boolean addNote(Book book, String note, int addOrOverride) {
-        if (addOrOverride == 1) {                                         //Adds notes to current note
-            book.setNote(book.getNote() + " " + note);
-        } else if (addOrOverride == 2) {                                  //Wipes out the current note, adds a new one
-            book.setNote(note);
-        } else {
+    public boolean checkBox(int index) {
+        if (isIndexInvalid(index)) {
             return false;
         }
+        Book book = booklist.get(index - 1);
+        book.setStatus(!book.getStatus());
         return true;
     }
 
-    //EFFECTS: Displays whole list
+//    //Adds personal rating to the book
+//    //MODIFIES: book
+//    public int addRating(Book book, int rating) {
+//        book.setRating(rating);
+//        return rating;
+//    }
+//
+//    //Add any comment, notes about the book
+//    //MODIFIES: book
+//    public boolean addNote(Book book, String note, int addOrOverride) {
+//        if (addOrOverride == 1) {                                         //It adds notes to current note
+//            book.setNote(book.getNote() + " " + note);
+//        } else if (addOrOverride == 2) {                                  //Wipes out the current note, adds a new one
+//            book.setNote(note);
+//        } else {
+//            return false;
+//        }
+//        return true;
+//    }
+
+    //EFFECTS: Returns string of the whole list formatted nicely
     public String displayList() {
-        String display = String.format("%-3s %-7s %-15s %-15s %-15s\n\n", "#", "Read", "Title", "Author", "Date Added");
+        String display = String.format("%-3s %-7s %-25s %-15s %-15s\n\n", "#", "Read", "Title", "Author", "Date Added");
         for (Book item: booklist) {
-            display += String.format("%-3s %-7s %-15s %-15s %-15s\n", booklist.indexOf(item) + 1, item.getStatus(), item.getTitle(),
-                    item.getAuthor(), item.getDate());
+            display += String.format("%-3s %-7s %-25s %-15s %-15s\n", booklist.indexOf(item) + 1, item.getStatus(),
+                    item.getTitle(), item.getAuthor(), item.getDate());
         }
         return display;
     }
@@ -80,5 +84,14 @@ public class BookList {
         return false;
     }
 
+    //Checks if index is invalid
+    public boolean isIndexInvalid(int index) {
+        return index < 1 || index > length();
+    }
+
+    //Checks list length/size
+    public int length() {
+        return booklist.size();
+    }
 
 }

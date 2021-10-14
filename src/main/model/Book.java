@@ -13,11 +13,10 @@ public class Book {
     private boolean status;     //Read/Not read
     private String note;
 
-    public Book(String title, String author, String image) {
+    public Book(String title, String author) {
         setTitle(title);
         setAuthor(author);
         date = LocalDate.now();
-        setImage(image);
         setStatus(status);
     }
 
@@ -33,21 +32,21 @@ public class Book {
         return date;
     }
 
-    public int getRating() {
-        return rating;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
     public  boolean getStatus() {
         return status;
     }
 
-    public String getNote() {
-        return note;
-    }
+//    public int getRating() {
+//        return rating;
+//    }
+//
+//    public String getImage() {
+//        return image;
+//    }
+//
+//    public String getNote() {
+//        return note;
+//    }
 
     public void setTitle(String title) {
         this.title = title;
@@ -57,20 +56,20 @@ public class Book {
         this.author = author;
     }
 
-    public void setImage(String image) {
-        this.image = image;
-    }
-
     public void setStatus(boolean status) {
         this.status = status;
     }
 
-    public void setRating(int stars) {
-        this.rating = stars;
-    }
-
-    public void setNote(String notes) {
-        this.note = notes;
-    }
+//    public void setImage(String image) {
+//        this.image = image;
+//    }
+//
+//    public void setRating(int stars) {
+//        this.rating = stars;
+//    }
+//
+//    public void setNote(String notes) {
+//        this.note = notes;
+//    }
 
 }
