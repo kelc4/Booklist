@@ -33,6 +33,7 @@ class BookListTest {
     @Test
     public void testCheckBox() {
         booklist.addBook(new Book("Title", "Author"));
+        assertFalse(booklist.checkBox(0));
         assertTrue(booklist.checkBox(1));
         assertFalse(booklist.checkBox(3));
     }
@@ -70,6 +71,7 @@ class BookListTest {
     @Test
     public void testIsIndexInvalid() {
         assertTrue(booklist.isIndexInvalid(1));
+        assertTrue(booklist.isIndexInvalid(0));
         booklist.addBook(b);
         assertFalse(booklist.isIndexInvalid(1));
         assertTrue(booklist.isIndexInvalid(9));
