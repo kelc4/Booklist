@@ -33,7 +33,7 @@ class BookListTest {
     @Test
     public void testCheckBox() {
         booklist.addBook(new Book("Title", "Author"));
-        assertFalse(booklist.checkBox(0));
+        assertTrue(booklist.checkBox(1));
         assertTrue(booklist.checkBox(1));
         assertFalse(booklist.checkBox(3));
     }
