@@ -3,18 +3,21 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+//Creates the booklist out of an arraylist and provides the implementation for everything a list for books should have
 public class BookList {
     //List of books
     private final List<Book> booklist;
 
     //Creates booklist
+    //NODIFIES: this
     //EFFECTS: sets up list where books will be stored
     public BookList() {
         booklist = new ArrayList<>();
     }
 
     //MODIFIES: this
-    //EFFECTS: Adds book to booklist if book (check from the title) is not already in the list
+    //EFFECTS: returns true if book is added to booklist successfully (book (check from the title) is not already
+    // in the list)
     public boolean addBook(Book book) {
         if (bookExists(book)) {
             return false;
@@ -24,7 +27,7 @@ public class BookList {
     }
 
     //MODIFIES: this
-    //EFFECTS: Removes book from booklist based in where it is in the list
+    //EFFECTS: Returns true if book is removed from booklist successfully
     public boolean deleteBook(int index) {
         if (isIndexInvalid(index)) {
             return false;
@@ -34,7 +37,8 @@ public class BookList {
     }
 
     //Checks if unchecked, unchecks if checked
-    //MODIFIES: book
+    //MODIFIES: book, this
+    //EFFECTS: returns true if status is successfully updated
     public boolean checkBox(int index) {
         if (isIndexInvalid(index)) {
             return false;

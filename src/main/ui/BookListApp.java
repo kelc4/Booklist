@@ -5,6 +5,7 @@ import model.BookList;
 
 import java.util.Scanner;
 
+//This class puts everything together and decides how the app will take in information and how it will react
 public class BookListApp {
     private String name;
     private int action;
@@ -12,6 +13,7 @@ public class BookListApp {
     private final Scanner in;
 
     //Creates new scanner, assigns action to -1
+    //EFFECTS: runs the booklist app
     public BookListApp() {
         action = -1;
         userList = new BookList();
@@ -23,6 +25,7 @@ public class BookListApp {
     }
 
     //Sets up taking input from user for what they want to do
+    //MODIFIES: name
     public void setup() {
         System.out.println("Welcome! What shall we name your list of books?");
         name = in.nextLine();
@@ -31,6 +34,8 @@ public class BookListApp {
     }
 
     //Receives action user wants to take and runs based on their choice
+    //MODIFIES: action
+    //EFFECTS: prints user's choice, reacts based on it
     public void run() {
         action = requestAction();
         switch (action) {
@@ -73,6 +78,7 @@ public class BookListApp {
     }
 
     //Ends program, stops program from running
+    //EFFECTS: stops the program
     public void terminate() {
         System.out.println("Thank you for using " + name + "!");
         System.exit(0);
@@ -80,6 +86,7 @@ public class BookListApp {
 
     //Adds a book to the list unless a book with the same title is already there
     //MODIFIES: userList
+    //EFFECTS: adds book to userList
     public void addABook() {
         System.out.print("You have chosen to add a book! What is its title? ");
         String title = in.nextLine();
@@ -93,8 +100,11 @@ public class BookListApp {
     }
 
     //REQUIRES: index to be a valid int, (not a string, symbol, etc.)
+    //MODIFIES: this
+    //EFFECTS: removes a book from userList
     public void removeABook() {
-        System.out.print("You have chosen to remove a book! Which number is it? ");
+        System.out.print("You have chosen to remove a book! Which number is it? (If you don't know what number it is, "
+                + "enter 0 now and choose the view list option)");
         int index = in.nextInt();
         if (userList.deleteBook(index)) {
             System.out.println("Book removed!");
@@ -104,6 +114,8 @@ public class BookListApp {
     }
 
     //REQUIRES: index to be a valid int, (not a string, symbol, etc.)
+    //MODIFIES: this
+    //EFFECTS: marks a book off as read/unread
     public void checkABookOff() {
         System.out.println("You have chosen to check a book off as read! Which book number would you like to check?");
         int index = in.nextInt();
@@ -123,6 +135,7 @@ public class BookListApp {
 //
 //    }
 
+    //Prints out the list
     public void viewList() {
         System.out.println("-----------------------------------------------------------------");
         System.out.print(name + "\n" + userList.displayList());

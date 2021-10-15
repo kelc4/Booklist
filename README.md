@@ -25,3 +25,4 @@ This project is interesting to me because I personally have my own list for thos
 - As a user, I want to be able to add a note to a book
 - As a user, I want to be able to filter the books I look at
 
+Feel free to ignore the code that is commented out. It is for future purposes.
