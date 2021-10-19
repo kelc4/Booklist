@@ -18,6 +18,8 @@ This project is interesting to me because I personally have my own list for thos
 - As a user, I want to be able to see the books on my list
 - As a user, I want to be able to delete a book from my list
 - As a user, I want to be able to check a book off as read
+- As a user, I want to be able to save my to-do list to file
+- As a user, I want to be given the option to load my to-do list from file
 
 *Potential*:
 - As a user, I want to be able to see an image of the book cover
