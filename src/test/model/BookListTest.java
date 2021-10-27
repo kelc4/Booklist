@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -13,8 +14,23 @@ class BookListTest {
 
     @BeforeEach
     public void setup() {
-        booklist = new BookList();
+        booklist = new BookList("nameJson");
         b = new Book("Title", "Author");
+    }
+
+    @Test
+    public void testBookConstructor() {
+        assertEquals("Title", b.getTitle());
+        assertEquals("Author", b.getAuthor());
+        LocalDate d = LocalDate.now();
+        String day = d.toString();
+        assertEquals(day, b.getDate());
+        assertFalse(b.getStatus());
+    }
+
+    @Test
+    public void testBookListConstructor() {
+        assertEquals(0, booklist.length());
     }
 
     @Test

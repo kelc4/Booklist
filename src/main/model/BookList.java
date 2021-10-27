@@ -1,18 +1,36 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 //Creates the booklist out of an arraylist and provides the implementation for everything a list for books should have
-public class BookList {
+public class BookList implements Writable {
     //List of books
     private final List<Book> booklist;
+    //private String name;            //The name the user wants (Will maybe retry in another part)
+    private String nameJson;        //The key Json recognizes
 
     //Creates booklist
     //NODIFIES: this
     //EFFECTS: sets up list where books will be stored
-    public BookList() {
+    public BookList(String nameJson) {
         booklist = new ArrayList<>();
+        this.nameJson = nameJson;
+    }
+
+    //EFFECTS: returns name of booklist
+    public String getNameJson() {
+        return nameJson;
+    }
+
+    // EFFECTS: returns an unmodifiable list of thingies in this workroom
+    public List<Book> getBooks() {
+        return Collections.unmodifiableList(booklist);
     }
 
     //MODIFIES: this
@@ -79,7 +97,7 @@ public class BookList {
         return display;
     }
 
-    //Checks if book is in list
+    //EFFECTS: Checks if book is in list, returns a boolean
     public boolean bookExists(Book book) {
         for (Book item: booklist) {
             if (item.getTitle().equals(book.getTitle())) {
@@ -89,14 +107,34 @@ public class BookList {
         return false;
     }
 
-    //Checks if index is invalid
+    //EFFECTS: Checks if index is invalid, returns a boolean
     public boolean isIndexInvalid(int index) {
         return index < 1 || index > length();
     }
 
-    //Checks list length/size
+    //EFFECTS: Checks list length/size, returns an int
     public int length() {
         return booklist.size();
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        //json.put("name", name);
+        json.put("nameJson", nameJson);
+        json.put("booklist", booklistToJson());
+        return json;
+    }
+
+    // EFFECTS: returns books in this booklist as a JSON array
+    private JSONArray booklistToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Book b : booklist) {
+            jsonArray.put(b.toJson());
+        }
+
+        return jsonArray;
     }
 
 }
