@@ -120,8 +120,8 @@ public class BookListApp {
     //MODIFIES: this
     //EFFECTS: removes a book from userList
     public void removeABook() {
-        System.out.println("You have chosen to remove a book! Which number is it? (If you don't know what number it is, "
-                + "enter 0 now and choose the view list option) ");
+        System.out.println("You have chosen to remove a book! Which number is it? (If you don't know what number "
+                + "it is, enter 0 now and choose the view list option) ");
         int index = in.nextInt();
         if (userList.deleteBook(index)) {
             System.out.println("Book removed!");
