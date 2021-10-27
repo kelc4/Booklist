@@ -50,7 +50,6 @@ class JsonWriterTest extends JsonTest {
             bl.addBook(new Book("1", "1", "2021-10-27", false));
             bl.addBook(new Book("2", "2", "2021-10-27", false));
             bl.addBook(new Book("3", "3", "2021-10-27", false));
-            bl.addBook(new Book("4", "4", "2021-10-27", false));
             JsonWriter writer = new JsonWriter("./data/testWriterGeneralBookList.json");
             writer.open();
             writer.write(bl);
@@ -60,11 +59,10 @@ class JsonWriterTest extends JsonTest {
             bl = reader.read();
             assertEquals("nameJson", bl.getNameJson());
             List<Book> books = bl.getBooks();
-            assertEquals(4, books.size());
+            assertEquals(3, books.size());
             checkBook("1", "1", "2021-10-27", false, books.get(0));
             checkBook("2", "2", "2021-10-27", false, books.get(1));
             checkBook("3", "3", "2021-10-27", false, books.get(2));
-            checkBook("4", "4", "2021-10-27", false, books.get(3));
 
         } catch (IOException e) {
             fail("Exception should not have been thrown");

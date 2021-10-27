@@ -44,11 +44,10 @@ class JsonReaderTest extends JsonTest {
             BookList bl = reader.read();
             assertEquals("nameJson", bl.getNameJson());
             List<Book> books = bl.getBooks();
-            assertEquals(4, books.size());
+            assertEquals(3, books.size());
             checkBook("1", "1", "2021-10-27", false, books.get(0));
             checkBook("2", "2", "2021-10-27", false, books.get(1));
             checkBook("3", "3", "2021-10-27", false, books.get(2));
-            checkBook("4", "4", "2021-10-27", false, books.get(3));
         } catch (IOException e) {
             fail("Couldn't read from file");
         }
