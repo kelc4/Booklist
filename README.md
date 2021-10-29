@@ -29,4 +29,4 @@ This project is interesting to me because I personally have my own list for thos
 
 Feel free to ignore the code that is commented out. It is for future purposes.
 
-*** Persistence package is modeled after the CPSC 210 sample application
+*** Persistence packages (in both main and test) are modeled after the CPSC 210 sample application

@@ -64,7 +64,6 @@ public class BookList implements Writable {
         Book book = booklist.get(index - 1);
         book.setStatus(!book.getStatus());
         return true;
-
     }
 
 //    //Adds personal rating to the book
@@ -117,6 +116,7 @@ public class BookList implements Writable {
         return booklist.size();
     }
 
+    //EFFECTS: returns nameJson and list of books as a JSON Object
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();

@@ -68,6 +68,7 @@ public class Book implements Writable {
         this.status = status;
     }
 
+    //EFFECTS: Saves elements of book to json object
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();

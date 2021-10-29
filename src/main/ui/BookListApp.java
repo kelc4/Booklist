@@ -34,7 +34,7 @@ public class BookListApp {
     }
 
     //Sets up taking input from user for what they want to do
-    //MODIFIES: name
+    //MODIFIES: this
     public void setup() {
         System.out.println("Welcome! What shall we name your list of books? (Name not be saved to file)");
         name = in.nextLine();
@@ -44,7 +44,7 @@ public class BookListApp {
     }
 
     //Receives action user wants to take and runs based on their choice
-    //MODIFIES: action
+    //MODIFIES: this
     //EFFECTS: prints user's choice, reacts based on it
     public void run() {
         action = requestAction();
@@ -79,6 +79,7 @@ public class BookListApp {
     }
 
     //REQUIRES: choice to be a valid int, (not a string, boolean, etc.)
+    //EFFECTS: returns an integer indicating which action user wants to take
     // ** If I decide to add addrating and addnote --> change view list to #6, change choice range to choice > 6 **
     //              "  + "[4] Add a rating \n [5] Add a note \n
     public int requestAction() {
@@ -102,7 +103,7 @@ public class BookListApp {
     }
 
     //Adds a book to the list unless a book with the same title is already there
-    //MODIFIES: userList
+    //MODIFIES: this
     //EFFECTS: adds book to userList
     public void addABook() {
         System.out.print("You have chosen to add a book! What is its title? ");
@@ -153,6 +154,7 @@ public class BookListApp {
 //
 //    }
 
+    //MODIFIES: this
     // EFFECTS: saves userList to file
     private void saveBookList() {
         try {
