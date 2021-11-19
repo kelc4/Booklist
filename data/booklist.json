@@ -1,39 +1,57 @@
 {
     "booklist": [
         {
-            "date": "2021-11-18",
+            "date": "2021-11-19",
             "author": "Narnia",
             "title": "The Chronicles of Narnia",
             "status": false
         },
         {
-            "date": "2021-11-18",
-            "author": "Harry Potter",
-            "title": "Harry Potter and the Philosopher's Stone",
+            "date": "2021-11-19",
+            "author": "Harry",
+            "title": "Harry Potter",
             "status": false
         },
         {
-            "date": "2021-11-18",
-            "author": "Giltrow",
-            "title": "Academic Writing",
-            "status": true
-        },
-        {
-            "date": "2021-11-18",
-            "author": "Amy Plum",
-            "title": "If I Should Die",
-            "status": false
-        },
-        {
-            "date": "2021-11-18",
+            "date": "2021-11-19",
             "author": "Jinwoo",
             "title": "Solo Leveling",
             "status": true
         },
         {
-            "date": "2021-11-18",
+            "date": "2021-11-19",
+            "author": "Amy Plum",
+            "title": "If I Should Die",
+            "status": false
+        },
+        {
+            "date": "2021-11-19",
             "author": "Minhyun",
             "title": "Leveling Up, Just By Eating",
+            "status": true
+        },
+        {
+            "date": "2021-11-19",
+            "author": "Giltrow",
+            "title": "Academic Writing",
+            "status": false
+        },
+        {
+            "date": "2021-11-19",
+            "author": "Hammack",
+            "title": "Book of Proof",
+            "status": false
+        },
+        {
+            "date": "2021-11-19",
+            "author": "Piplup",
+            "title": "Pokemon",
+            "status": true
+        },
+        {
+            "date": "2021-11-19",
+            "author": "Leah and Roxant",
+            "title": "Bring The Love",
             "status": true
         }
     ],

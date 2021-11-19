@@ -21,6 +21,7 @@ public class BookListAppGUI extends JFrame implements ActionListener {
     private static final int FRAME_HEIGHT = 420;
 
     private ImageIcon imageIcon;
+    private ImageIcon image;
 
     private JPanel topPanel;
     private JPanel bottomPanel;
@@ -41,7 +42,7 @@ public class BookListAppGUI extends JFrame implements ActionListener {
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
 
-    //BookListApp GUI
+    //constructs new BookListAppGUI
     public BookListAppGUI() {
         //Initialize local variables
         init();
@@ -64,6 +65,7 @@ public class BookListAppGUI extends JFrame implements ActionListener {
     //EFFECTS: Initializes local variables related to frame
     public void init() {
         imageIcon = new ImageIcon("b.jpg");
+        image = new ImageIcon("books.png");
         topPanel = new JPanel();
         bottomPanel = new JPanel(new BorderLayout());
 
@@ -77,8 +79,8 @@ public class BookListAppGUI extends JFrame implements ActionListener {
     //EFFECTS: initializes local variables related to booklist
     public void bookListInit() {
         list = new BookList("nameJson");
-        name = JOptionPane.showInputDialog(null, "Welcome to your booklist! What \nwould "
-                + "you like to name it?", ":D", JOptionPane.QUESTION_MESSAGE);
+        name = (String) JOptionPane.showInputDialog(null, "Welcome to your booklist! What \nwould "
+                + "you like to name it?", ":D", JOptionPane.PLAIN_MESSAGE, image, null, "");
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
 
@@ -91,12 +93,10 @@ public class BookListAppGUI extends JFrame implements ActionListener {
     //EFFECTS: formats panels, adds table
     public void createPanels() {
         //Top
-        topPanel.setBackground(new Color(65, 0, 90));
+        topPanel.setBackground(new Color(155, 150, 255));
         topPanel.setBounds(0, 0, FRAME_WIDTH, FRAME_HEIGHT / 8);
-        topPanel.setBorder(new MatteBorder(0, 0, 1, 0, Color.black));
 
         //Bottom
-        bottomPanel.setBackground(new Color(55, 0, 85));
         bottomPanel.setBounds(0, FRAME_HEIGHT / 8, FRAME_WIDTH, FRAME_HEIGHT * 7 / 8);
 
         setTableStyle();
@@ -108,45 +108,51 @@ public class BookListAppGUI extends JFrame implements ActionListener {
     public void setTableStyle() {
         cellRenderer.setHorizontalAlignment(JLabel.CENTER);
         table.setDefaultRenderer(String.class, cellRenderer);
-        table.getColumnModel().getColumn(0).setPreferredWidth(5);
-        table.getColumnModel().getColumn(1).setPreferredWidth(5);
+        table.getColumnModel().getColumn(0).setPreferredWidth(8);
+        table.getColumnModel().getColumn(1).setPreferredWidth(8);
+        table.getColumnModel().getColumn(2).setPreferredWidth((FRAME_WIDTH - 100) / 4);
+        table.getColumnModel().getColumn(3).setPreferredWidth((FRAME_WIDTH - 100) / 4);
+        table.getColumnModel().getColumn(4).setPreferredWidth(50);
     }
 
     //MODIFIES: this
     //EFFECTS: creates buttons
     public void createButtons() {
-        addItemButton.setBounds(0, 0, FRAME_WIDTH / 4, 75);
+
+        addItemButton.setBounds(0, 0, 0, 0);
         addItemButton.setText("Add Book");
         addItemButton.setFocusable(false);
 
-        removeItemButton.setBounds(FRAME_WIDTH / 4, 0, FRAME_WIDTH / 4, 75);
+        removeItemButton.setBounds(0, 0, 0, 0);
         removeItemButton.setText("Remove Book");
         removeItemButton.setFocusable(false);
 
-        loadDataButton.setBounds(FRAME_WIDTH / 2, 0, FRAME_WIDTH / 4, 75);
+        loadDataButton.setBounds(0, 0, 0, 0);
         loadDataButton.setText("Load List");
         loadDataButton.setFocusable(false);
 
-        saveDataButton.setBounds(FRAME_WIDTH * 3 / 4, 0, FRAME_WIDTH / 4, 75);
+        saveDataButton.setBounds(0, 0, 0, 0);
         saveDataButton.setText("Save List");
         saveDataButton.setFocusable(false);
     }
 
+    //MODIFIES: this
     //EFFECTS: changes title of frame to name
     public void setListTitle(String name) {
         setTitle(name);
     }
 
+    //MODIFIES: this
     //EFFECTS: Sets up top of frame
     public void setupTopFrame() {
         setIconImage(imageIcon.getImage());   //Sets icon on top left of frame
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //makes program stop running after closing frame
     }
 
+    //MODIFIES: this
     //EFFECTS: sets up around and about the inside of the frame
     public void setupWholeFrame() {
         //About the frame
-        getContentPane().setBackground(new Color(55, 0, 85));
         setResizable(false); //prevents frame from being resized
         setLayout(null);
         setSize(FRAME_WIDTH, FRAME_HEIGHT); //x, y dimensions of frame
@@ -154,6 +160,7 @@ public class BookListAppGUI extends JFrame implements ActionListener {
         setVisible(true); //makes frame visible
     }
 
+    //MODIFIES: this
     //EFFECTS: adds panels and buttons to frame
     public void addComponentsToFrame() {
         addPanelsToFrame();
@@ -240,6 +247,7 @@ public class BookListAppGUI extends JFrame implements ActionListener {
         list.merge(temp);
     }
 
+    //MODIFIES: this
     //EFFECTS: saves list to file
     public void saveDataButtonClicked() {
         try {
