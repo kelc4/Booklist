@@ -4,7 +4,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -34,6 +33,13 @@ class BookListTest {
     }
 
     @Test
+    public void testGetBook() {
+        assertEquals(null, booklist.getBook(0));
+        booklist.addBook(b);
+        assertEquals(b, booklist.getBook(0));
+    }
+
+    @Test
     public void testAddBook() {
         assertTrue(booklist.addBook(b));
         assertTrue(booklist.addBook(new Book("Title", "A Different Author")));
@@ -54,17 +60,6 @@ class BookListTest {
         assertTrue(booklist.checkBox(1));
         assertFalse(booklist.checkBox(3));
     }
-
-//    @Test
-//    public void testAddRating() {
-//        assertEquals(5, booklist.addRating(b, 5));
-//    }
-//
-//    @Test
-//    public void testAddNote() {
-//        assertTrue(booklist.addNote(b, "Good", 1));
-//    }
-
     @Test
     public void testDisplayList() {
         String check = String.format("%-3s %-7s %-25s %-15s %-15s\n\n", "#", "Read", "Title", "Author", "Date Added");
@@ -99,6 +94,43 @@ class BookListTest {
         assertEquals(0, booklist.length());
         booklist.addBook(b);
         assertEquals(1, booklist.length());
+    }
+
+    @Test
+    public void testMerge() {
+        booklist.addBook(b);
+        assertEquals(1, booklist.length());
+
+        BookList bl = new BookList("nameJson");
+        bl.addBook(new Book("1", "1"));
+        bl.addBook(new Book("2", "2"));
+
+        booklist.merge(bl);
+
+        assertEquals(3, booklist.length());
+    }
+
+    @Test
+    public void testRemoveAllBooks() {
+        booklist.addBook(b);
+        booklist.addBook(new Book("1", "1"));
+        booklist.addBook(new Book("2", "2"));
+        assertEquals(3, booklist.length());
+        booklist.removeAllBooks();
+        assertEquals(0, booklist.length());
+    }
+
+    @Test
+    public void testBookSetterMethods() {
+        assertEquals("Title", b.getTitle());
+        b.setTitle("1");
+        assertEquals("1", b.getTitle());
+        assertEquals("Author", b.getAuthor());
+        b.setAuthor("1");
+        assertEquals("1", b.getAuthor());
+        assertEquals(LocalDate.now().toString(), b.getDate());
+        b.setDate("2021-11-18");
+        assertEquals("2021-11-18", b.getDate());
     }
 
 }

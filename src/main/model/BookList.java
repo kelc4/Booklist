@@ -34,7 +34,10 @@ public class BookList implements Writable {
 
     //EFFECTS: returns book at specific index
     public Book getBook(int index) {
-        return booklist.get(index);
+        if (!booklist.isEmpty()) {
+            return booklist.get(index);
+        }
+        return null;
     }
 
     //MODIFIES: this
