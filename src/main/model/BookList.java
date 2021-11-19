@@ -12,12 +12,11 @@ import java.util.List;
 public class BookList implements Writable {
     //List of books
     private final List<Book> booklist;
-    //private String name;            //The name the user wants (Will maybe retry in another part)
     private String nameJson;        //The key Json recognizes
 
     //Creates booklist
     //NODIFIES: this
-    //EFFECTS: sets up list where books will be stored
+    //EFFECTS: constructs BookList with empty ArrayList and nameJson
     public BookList(String nameJson) {
         booklist = new ArrayList<>();
         this.nameJson = nameJson;
@@ -31,6 +30,11 @@ public class BookList implements Writable {
     // EFFECTS: returns an unmodifiable list of thingies in this workroom
     public List<Book> getBooks() {
         return Collections.unmodifiableList(booklist);
+    }
+
+    //EFFECTS: returns book at specific index
+    public Book getBook(int index) {
+        return booklist.get(index);
     }
 
     //MODIFIES: this
@@ -66,26 +70,6 @@ public class BookList implements Writable {
         return true;
     }
 
-//    //Adds personal rating to the book
-//    //MODIFIES: book
-//    public int addRating(Book book, int rating) {
-//        book.setRating(rating);
-//        return rating;
-//    }
-//
-//    //Add any comment, notes about the book
-//    //MODIFIES: book
-//    public boolean addNote(Book book, String note, int addOrOverride) {
-//        if (addOrOverride == 1) {                                         //It adds notes to current note
-//            book.setNote(book.getNote() + " " + note);
-//        } else if (addOrOverride == 2) {                                  //Wipes out the current note, adds a new one
-//            book.setNote(note);
-//        } else {
-//            return false;
-//        }
-//        return true;
-//    }
-
     //EFFECTS: Returns string of the whole list formatted nicely
     public String displayList() {
         String display = String.format("%-3s %-7s %-25s %-15s %-15s\n\n", "#", "Read", "Title", "Author", "Date Added");
@@ -99,14 +83,14 @@ public class BookList implements Writable {
     //EFFECTS: Checks if book is in list, returns a boolean
     public boolean bookExists(Book book) {
         for (Book item: booklist) {
-            if (item.getTitle().equals(book.getTitle())) {
+            if (item.getTitle().equals(book.getTitle()) && item.getAuthor().equals(book.getAuthor())) {
                 return true;
             }
         }
         return false;
     }
 
-    //EFFECTS: Checks if index is invalid, returns a boolean
+    //EFFECTS: returns if index is invalid
     public boolean isIndexInvalid(int index) {
         return index < 1 || index > length();
     }
@@ -116,11 +100,22 @@ public class BookList implements Writable {
         return booklist.size();
     }
 
+    //MODIFIES: this
+    //EFFECTS: puts two lists together
+    public void merge(BookList other) {
+        booklist.addAll(other.booklist);
+    }
+
+    //MODIFIES: this
+    //EFFECTS: removes all books from booklist
+    public void removeAllBooks() {
+        booklist.clear();
+    }
+
     //EFFECTS: returns nameJson and list of books as a JSON Object
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
-        //json.put("name", name);
         json.put("nameJson", nameJson);
         json.put("booklist", booklistToJson());
         return json;
@@ -133,7 +128,6 @@ public class BookList implements Writable {
         for (Book b : booklist) {
             jsonArray.put(b.toJson());
         }
-
         return jsonArray;
     }
 

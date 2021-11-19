@@ -36,6 +36,7 @@ class BookListTest {
     @Test
     public void testAddBook() {
         assertTrue(booklist.addBook(b));
+        assertTrue(booklist.addBook(new Book("Title", "A Different Author")));
         assertFalse(booklist.addBook(b));
     }
 

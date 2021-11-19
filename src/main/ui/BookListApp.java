@@ -5,6 +5,7 @@ import model.BookList;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
+import javax.swing.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
@@ -22,7 +23,7 @@ public class BookListApp {
 
     //Creates new scanner, assigns action to -1
     //EFFECTS: runs the booklist app
-    public BookListApp() throws FileNotFoundException {
+    public BookListApp() {
         action = -1;
         in = new Scanner(System.in);
         jsonWriter = new JsonWriter(JSON_STORE);
@@ -60,12 +61,6 @@ public class BookListApp {
             case 3:
                 checkABookOff();
                 break;
-//            case 4:
-//                addARating();
-//                break;
-//            case 5:
-//                addANote();
-//                break;
             case 4:
                 viewList();
                 break;
@@ -80,8 +75,6 @@ public class BookListApp {
 
     //REQUIRES: choice to be a valid int, (not a string, boolean, etc.)
     //EFFECTS: returns an integer indicating which action user wants to take
-    // ** If I decide to add addrating and addnote --> change view list to #6, change choice range to choice > 6 **
-    //              "  + "[4] Add a rating \n [5] Add a note \n
     public int requestAction() {
         System.out.println("\n [0] Quit \n [1] Add a book \n [2] Remove a book \n [3] Check a book off as read \n "
                 + "[4] View list \n [5] Save list \n [6] Load list");
@@ -143,16 +136,7 @@ public class BookListApp {
         } else {
             System.out.println("Book number is invalid");
         }
-
     }
-
-//    public void addARating() {
-//
-//    }
-//
-//    public void addANote() {
-//
-//    }
 
     //MODIFIES: this
     // EFFECTS: saves userList to file

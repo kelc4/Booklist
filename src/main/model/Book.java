@@ -4,7 +4,6 @@ import org.json.JSONObject;
 import persistence.Writable;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 //Creates a Book and initializes it with a title, author, date added and read/not read
 public class Book implements Writable {
@@ -13,10 +12,7 @@ public class Book implements Writable {
     private String title;       //Title of book
     private String author;      //Author of book
     private String date;        //Date book was added
-    private int rating;         //Rating out of 5
-    private String image;       //Image of book cover
     private boolean status;     //Read/Not read
-    private String note;        //Note about the book
 
     //Constructor for when adding books to the list
     public Book(String title, String author) {
@@ -47,23 +43,22 @@ public class Book implements Writable {
     }
 
     //EFFECTS: returns status
-    public  boolean getStatus() {
+    public boolean getStatus() {
         return status;
     }
 
-//    public int getRating() {
-//        return rating;
-//    }
-//
-//    public String getImage() {
-//        return image;
-//    }
-//
-//    public String getNote() {
-//        return note;
-//    }
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-    //MODIFIES: this
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
     public void setStatus(boolean status) {
         this.status = status;
     }
