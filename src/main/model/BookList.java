@@ -48,6 +48,7 @@ public class BookList implements Writable {
             return false;
         }
         booklist.add(book);
+        EventLog.getInstance().logEvent(new Event(book.getTitle() + " was added to your booklist"));
         return true;
     }
 
@@ -57,6 +58,8 @@ public class BookList implements Writable {
         if (isIndexInvalid(index)) {
             return false;
         }
+        EventLog.getInstance().logEvent(new Event(booklist.get(index - 1).getTitle()
+                + " was deleted from your booklist"));
         booklist.remove(index - 1);
         return true;
     }
@@ -113,6 +116,16 @@ public class BookList implements Writable {
     //EFFECTS: removes all books from booklist
     public void removeAllBooks() {
         booklist.clear();
+    }
+
+    //EFFECTS: Adds save and load to EventLog (Since they belong to the ui package instead of the model package)
+    public void logEvent(String event, String jsonName) {
+        if (event.equals("Load")) {
+            EventLog.getInstance().logEvent(new Event("Data loaded from " + jsonName));
+        } else if (event.equals("Save")) {
+
+            EventLog.getInstance().logEvent(new Event("Data saved to " + jsonName));
+        }
     }
 
     //EFFECTS: returns nameJson and list of books as a JSON Object

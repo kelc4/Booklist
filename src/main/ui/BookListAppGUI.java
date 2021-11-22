@@ -2,11 +2,11 @@ package ui;
 
 import model.Book;
 import model.BookList;
+import model.EventLog;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
 import javax.swing.*;
-import javax.swing.border.MatteBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -146,7 +146,26 @@ public class BookListAppGUI extends JFrame implements ActionListener {
     //EFFECTS: Sets up top of frame
     public void setupTopFrame() {
         setIconImage(imageIcon.getImage());   //Sets icon on top left of frame
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //makes program stop running after closing frame
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE); //makes program stop running after closing frame
+        actionOnClose();
+    }
+
+    //MODIFIES: this
+    //EFFECTS: Prints EventLog to console
+    public void actionOnClose() {
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                String log = "";
+                for (model.Event e: EventLog.getInstance()) {
+                    log += e.getDate() + "\n" + e.getDescription() + "\n\n";
+                }
+                log += "Closing " + name + "...";
+                System.out.println(log);
+                //Exit code
+                System.exit(0);
+            }
+        });
     }
 
     //MODIFIES: this
@@ -245,6 +264,7 @@ public class BookListAppGUI extends JFrame implements ActionListener {
         }
         list.removeAllBooks();
         list.merge(temp);
+        list.logEvent("Load", JSON_STORE);
     }
 
     //MODIFIES: this
@@ -260,6 +280,7 @@ public class BookListAppGUI extends JFrame implements ActionListener {
             JOptionPane.showMessageDialog(null, "Unable to write to file: " + JSON_STORE,
                     "Save Data", JOptionPane.ERROR_MESSAGE);
         }
+        list.logEvent("Save", JSON_STORE);
     }
 
     //MODIFIES: this
@@ -285,4 +306,6 @@ public class BookListAppGUI extends JFrame implements ActionListener {
             saveDataButtonClicked();
         }
     }
+
+
 }

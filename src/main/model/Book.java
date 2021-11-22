@@ -8,7 +8,7 @@ import java.time.LocalDate;
 //Creates a Book and initializes it with a title, author, date added and read/not read
 public class Book implements Writable {
 
-    //Field
+    //Fields
     private String title;       //Title of book
     private String author;      //Author of book
     private String date;        //Date book was added

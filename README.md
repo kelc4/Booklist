@@ -18,4 +18,9 @@ This project is interesting to me because I personally have my own list for thos
 - As a user, I want to be able to save my to-do list to file
 - As a user, I want to be given the option to load my to-do list from file
 
+## Phase 4: Task 2
+![Event Log Screenshot](CPSC%20210%20-%20Phase%204%20T2%20EventLog.jpg)
+
 *** Persistence packages (in both main and test) are modeled after the CPSC 210 sample application
+
+*** Event and EventLog are taken directly from CPSC 210 AlarmSystem Application
