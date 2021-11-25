@@ -2,6 +2,8 @@ package ui;
 
 import model.Book;
 import model.BookList;
+import model.Event;
+import model.EventLog;
 
 import javax.swing.table.AbstractTableModel;
 
@@ -84,8 +86,10 @@ public class BookListTableModel extends AbstractTableModel {
             book.setDate(value.toString());
         } else {
             if (value == Boolean.FALSE) {
+                EventLog.getInstance().logEvent(new Event(book.getTitle() + " was marked as unread"));
                 book.setStatus(false);
             } else {
+                EventLog.getInstance().logEvent(new Event(book.getTitle() + " was marked as read"));
                 book.setStatus(true);
             }
         }

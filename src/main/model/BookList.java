@@ -15,7 +15,7 @@ public class BookList implements Writable {
     private String nameJson;        //The key Json recognizes
 
     //Creates booklist
-    //NODIFIES: this
+    //NMODIFIES: this
     //EFFECTS: constructs BookList with empty ArrayList and nameJson
     public BookList(String nameJson) {
         booklist = new ArrayList<>();
@@ -123,7 +123,6 @@ public class BookList implements Writable {
         if (event.equals("Load")) {
             EventLog.getInstance().logEvent(new Event("Data loaded from " + jsonName));
         } else if (event.equals("Save")) {
-
             EventLog.getInstance().logEvent(new Event("Data saved to " + jsonName));
         }
     }

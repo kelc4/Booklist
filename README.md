@@ -21,6 +21,19 @@ This project is interesting to me because I personally have my own list for thos
 ## Phase 4: Task 2
 ![Event Log Screenshot](CPSC%20210%20-%20Phase%204%20T2%20EventLog.jpg)
 
+## Phase 4: Task 3
+![UML Diagram](CPSC%20210%20-%20Phase%204%20T3%20UML%20Diagram.JPG)
+
+### Reflection  
+- Next time: 
+  - Looking at the diagram, it seems like it is already simple
+  - Clean up code in classes, since methods and order of code are fairly messy
+  - Rename some methods in GUI
+  - Rewrite, or fix up JsonReader and JsonWriter
+
 *** Persistence packages (in both main and test) are modeled after the CPSC 210 sample application
 
 *** Event and EventLog are taken directly from CPSC 210 AlarmSystem Application
+
+*** actionOnClosed() method in BookListAppGUI referenced from user9643348's post on stackoverflow
+https://stackoverflow.com/questions/60516720/java-how-to-print-message-when-a-jframe-is-closed 

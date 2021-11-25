@@ -71,12 +71,6 @@
             "author": "1",
             "title": "1",
             "status": true
-        },
-        {
-            "date": "2021-11-22",
-            "author": "3",
-            "title": "3",
-            "status": false
         }
     ],
     "nameJson": "nameJson"

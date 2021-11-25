@@ -3,6 +3,7 @@ package ui;
 import model.Book;
 import model.BookList;
 import model.EventLog;
+import model.Event;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
@@ -157,7 +158,7 @@ public class BookListAppGUI extends JFrame implements ActionListener {
             @Override
             public void windowClosing(java.awt.event.WindowEvent windowEvent) {
                 String log = "";
-                for (model.Event e: EventLog.getInstance()) {
+                for (Event e: EventLog.getInstance()) {
                     log += e.getDate() + "\n" + e.getDescription() + "\n\n";
                 }
                 log += "Closing " + name + "...";
