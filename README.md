@@ -22,7 +22,7 @@ This project is interesting to me because I personally have my own list for thos
 ![Event Log Screenshot](CPSC%20210%20-%20Phase%204%20T2%20EventLog.jpg)
 
 ## Phase 4: Task 3
-![UML Diagram](CPSC%20210%20-%20Phase%204%20T3%20UML%20Diagram.JPG)
+![UML Diagram](CPSC%20210%20-%20Phase%204%20T3%20UML%20Diagram.png)
 
 ### Reflection  
 - Next time: 
