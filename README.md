@@ -33,7 +33,7 @@ This project is interesting to me because I personally have my own list for thos
 
 *** Persistence packages (in both main and test) are modeled after the CPSC 210 sample application
 
-*** Event and EventLog are taken directly from CPSC 210 AlarmSystem Application
+*** Event and EventLog are taken directly from CPSC 210 AlarmSystem Application 
 
 *** actionOnClosed() method in BookListAppGUI referenced from user9643348's post on stackoverflow
 https://stackoverflow.com/questions/60516720/java-how-to-print-message-when-a-jframe-is-closed 
